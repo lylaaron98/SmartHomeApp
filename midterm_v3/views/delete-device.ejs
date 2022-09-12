@@ -1,0 +1,141 @@
+<div class="content">
+    <h2 class="top-title">Delete Devices </h2>
+    <br>
+    <% if(message !== "") { %>
+        <div class="notification hide"><%= message %></div>
+    <% } %>
+    <div class="devices grid">
+        <% rows.forEach(device => { %>
+            <div class="device-card" style="pointer-events: none;">
+                <div class="top">
+
+                    <div class="devtypes">
+                        <input id="typedev" type="hidden" value="<%= device.type %>">
+                        <li id="typeicon" class="material-icons" style="font-size: 22px;margin-right: 0.65rem;"></li>
+                        <input id="openclose" type="hidden" value="<%= device.open_close %>">
+                    </div>
+                    
+                    <div class="device-name">
+                        <%= device.name %>
+                        <br> <span class="device_type_ss"><%= device.type %></span>
+                    </div>
+
+                    <div class="delete-btn">
+                        <a id="delete-btn" href="/delete-device?device_id=<%= device.id %>"><i class="fas fa-trash icon"></i></a>
+                    </div>
+                </div>
+                <div class="bottom flex">
+                        <div class="left">
+                            <div class="device-value">
+                                <% if(device.type.includes('Door Lock')){ %>
+                                    <% if(device.open_close === 1) { %>
+                                        <span class="openclosespan opened">Opened</span>
+                                    <% }else{ %>
+                                        <span class="openclosespan closed">Closed</span>
+                                    <% } %>
+                                <% } %>
+                                <% if(device.type.includes('Lights')){ %>
+                                    <%= device.brightness %><span>%</span>
+                                <% } %>
+                                <% if(device.type.includes('Tv') || device.type.includes('Speakers')|| device.type.includes('Radio')){ %>
+                                    <%= device.volume %><span>%</span>
+                                <% } %>
+                                <% if(device.type.includes('Heater') || device.type.includes('Oven') || device.type.includes('Water Dispenser') || device.type.includes('Rice Cooker') || device.type.includes('Air Conditioner') || device.type.includes('Thermostat') || device.type.includes('Fridge') || device.type.includes('Washing Machine') || device.type.includes('Coffee Machine')){ %>
+                                    <%= device.temperature %><span>°C</span>
+                                <% } %>
+                                <% if( device.type.includes('Electronic Fan') || device.type.includes('Air Purifier')){ %>
+                                    <%= device.speed %><span style="font-size: 18px;">rad/s</span>
+                                <% } %>
+                                <% if( device.type.includes("Laptop") || device.type.includes("computer") || device.type.includes("Camera")){ %>
+                                    <% if(device.on_of) { %>
+                                        <span style="font-size: 18px;background:rgb(34, 59, 24);border-radius:10px;padding:0.5rem 0.8rem;color:rgb(157, 255, 0);">Device is ON</span>
+                                    <% }else { %>
+                                        <span style="font-size: 18px;background:rgb(59, 24, 24);border-radius:10px;padding:0.5rem 0.8rem;color:rgb(255, 17, 0);">Device is OFF</span>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            <div class="device-desc">
+                                <% if(device.type.includes('Lights')){ %>
+                                    brightness in %
+                                <% } %>
+                                <% if(device.type.includes('Tv') || device.type.includes('Radio')){ %>
+                                    selected channel : <%= device.channel %><br>
+                                <% } %>
+                                <% if(device.type.includes('Tv') || device.type.includes('Speakers')|| device.type.includes('Radio')){ %>
+                                    volume in %
+                                <% } %>
+                                <% if(device.type.includes('Heater') || device.type.includes('Oven') || device.type.includes('Water Dispenser') || device.type.includes('Rice Cooker') || device.type.includes('Air Conditioner') || device.type.includes('Thermostat') || device.type.includes('Fridge') || device.type.includes('Washing Machine') || device.type.includes('Coffee Machine')){ %>
+                                    temperature in °C
+                                <% } %>
+                                <% if( device.type.includes('Electronic Fan') || device.type.includes('Air Purifier')){ %>
+                                    speed in %
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="right flex-center flex-dir-col">
+                            <div class="devtypes">
+                                <div class="device-style flex-center flex-dir-col">
+                                        <% if(device.type.includes('Lights')){ %>
+                                            <div class="style" style="height:<%= device.brightness %>px;<% if( device.brightness ){ %>box-shadow:0 2px 10px <%= device.color  %>;background-color:<%= device.color  %><% } %>"></div>
+                                            <div class="cercle" style="bottom: <%= device.brightness %>px;"></div>
+                                        <% } %>
+                                        <% if(device.type.includes('Tv') || device.type.includes('Speakers')|| device.type.includes('Radio')){ %>
+                                            <div class="style flex-center volcc" style="height:<%= device.volume %>px;">
+                                                <div class="flex flex-dir-col">
+                                                    <div class="volc"></div>
+                                                    <div class="volc"></div>
+                                                    <div class="volc"></div>
+                                                    <div class="volc"></div>
+                                                    <div class="volc"></div>
+                                                    <div class="volc"></div>
+                                                    <div class="volc"></div>
+                                                    <div class="volc"></div>
+                                                    <div class="volc"></div>
+                                                </div>
+                                            </div>
+                                        <% } %>
+                                        <% if(device.type.includes('Heater') || device.type.includes('Oven') || device.type.includes('Water Dispenser') || device.type.includes('Rice Cooker') || device.type.includes('Air Conditioner') || device.type.includes('Thermostat') || device.type.includes('Fridge') || device.type.includes('Washing Machine') || device.type.includes('Coffee Machine')){ %>
+                                            <% if( device.type.includes('Fridge') ) { let temp = parseInt(device.temperature); %>
+                                                <div class="style temperc" style="height:<%= 100 %>px;background:linear-gradient(to top,#004391,#0084ff,#55eeff);"></div>
+                                                <div class="cercle" style="bottom: <%= temp + 100 %>px;"></div>
+                                            <% }else if( device.type.includes('Air Conditioner') ){ let temp = parseInt(device.temperature); %>
+                                                <div class="style temperc" style="height:<%= 100 %>px;background:linear-gradient(to top,rgb(0, 58, 182),#00c3ff,rgb(251, 255, 0),#f30909);"></div>
+                                                <div class="cercle" style="bottom: <%= temp + 35 %>px;"></div>
+                                            <% }else{ %>
+                                                <div class="style temperc" style="height:<%= device.temperature %>px;"></div>
+                                                <div class="cercle" style="bottom: <%= device.temperature %>px;"></div>
+                                            <% } %>
+                                        <% } %>
+                                        <% if( device.type.includes('Electronic Fan') || device.type.includes('Air Purifier')){ %>
+                                            <div class="style speedc" style="height:<%= device.speed %>px;"></div>
+                                            <div class="cercle" style="bottom: <%= device.speed %>px;"></div>
+                                        <% } %>
+                                        <% if( device.type.includes("Laptop") || device.type.includes("computer") || device.type.includes("Camera")){ %>
+                                            <% if(device.on_of) { %>
+                                                <div class="style ison" style="height:100px;"></div>
+                                                <div class="cercle" style="bottom: 100px;"></div>
+                                            <% }else { %>
+                                                <div class="style isof" style="height:100px;"></div>
+                                                <div class="cercle" style="bottom: 8.5px;"></div>
+                                            <% } %>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <br>
+                                <% if(device.on_of){ %>
+                                <span class="on">
+                                    Turned On <span></span>
+                                </span>
+                                <% } %>
+                                <% if(!device.on_of){ %>
+                                <span class="of">
+                                    Turned Off <span></span>
+                                </span>
+                                <% } %>
+                            </span>
+                        </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>

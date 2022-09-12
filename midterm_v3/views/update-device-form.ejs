@@ -1,0 +1,111 @@
+<div class="content">
+    <h2 class="top-title">Update Devices </h2>
+    <br><br>
+    <h2>Update smart home devices : </h2>
+    <br>
+    <div class="devices-form">
+        <form action="/update-device" method="post">
+            <div class="form-input name flex">
+                <h3 class="form-title">you're updating the <%= row.name %> smart device in your house : </h3>
+                <input id="device_type" type="hidden" name="type" value="<%= row.type%>">
+                <input id="device_id" type="hidden" name="device_id" value="<%= row.id %>">
+            </div>
+            <div class="form-input name flex">
+                <label class="label" for="">Device Name : </label>
+                <div class="flex">
+                    <input type="text" name="dev_name" value="<%= row.name %>" required>
+                </div>
+            </div>
+            <div class="form-input flex">
+                <label class="label" for="onof">status : </label>
+                <div class="flex-center">
+                    <span style="margin-right: 8px;font-size:14px;">Off </span>
+                    <label class="switch" >
+                        <% if(row.on_of) { %>
+                        <input type="checkbox" name="onof" id="onof" value="1" checked>
+                        <% }else { %>
+                        <input type="checkbox" name="onof" id="onof" value="0">
+                        <% } %>
+                        <span class="slider round"></span>
+                    </label>
+                    <span  style="margin-left: 8px;font-size:14px;"> On</span>
+                </div>
+            </div>
+            <% if(row.type.includes("Door Lock")) { %>
+            <div class="form-input open flex">
+                <label class="label" for="onof">open/close</label>
+                <div class="flex-center">
+                    <span style="margin-right: 8px;font-size:14px;">Close </span>
+                    <label class="switch">
+                        <% if(row.open_close) { %>
+                        <input type="checkbox" name="openclose" id="openclose" value="1" checked>
+                        <% }else { %>
+                        <input type="checkbox" name="openclose" id="openclose" value="0">
+                        <% } %>
+                        <span class="slider round"></span>
+                    </label>
+                    <span  style="margin-left: 8px;font-size:14px;"> Open</span>
+                </div>
+            </div>
+            <% } %>
+            <% if(row.type.includes('Heater') || row.type.includes('Oven') || row.type.includes('Water Dispenser') || row.type.includes('Rice Cooker') || row.type.includes('Air Conditioner') || row.type.includes('Thermostat') || row.type.includes('Fridge') || row.type.includes('Washing Machine') || row.type.includes('Coffee Machine')) { %>
+            <div class="form-input temp flex">
+                <label class="label" for="">Temperature in °C : </label>
+                <div class="flex">
+                    <input id="temper" type="number" name="temp" max="100" value="<%= row.temperature %>">
+                </div>
+            </div>
+            <% } %>
+            <% if(row.type.includes("Lights")) { %>
+            <div class="form-input bright flex">
+                <label class="label"  for="">Brightness in % : </label>
+                <div class="flex">
+                    <input id="brightness" type="range" min="0" max="100" name="bright" value="<%= row.brightness %>">
+                    <span class="result_val flex-center brightness_val" ><%= row.brightness %></span>
+                </div>
+            </div>
+            <div class="form-input color flex">
+                <label class="label" for="">Color : </label>
+                <div class="flex">
+                    <input type="color" name="color" value="<%= row.color %>">
+                </div>
+            </div>
+            <% } %>
+            <% if(row.type.includes("Radio") || row.type.includes("Speakers") || row.type.includes("Tv")) { %>
+            <div class="form-input vol flex">
+                <label class="label"  class="label"  for="onof">Volume in % : </label>
+                <div class="flex">
+                    <input id="volume" type="range" min="0" max="100" name="volume" value="<%= row.volume %>">
+                    <span class="result_val flex-center volume_val" ><%= row.volume %></span>
+                </div>
+            </div>
+            <% } %>
+            <% if(row.type.includes("Air Purifier") || row.type.includes("Electronic Fan")) { %>
+            <div class="form-input speed flex">
+                <label class="label"  for="onof">Speed : </label>
+                <div class="flex">
+                    <input type="number" min="0" max="100" name="speed" value="<%= row.speed %>">
+                </div>
+            </div>
+            <% } %>
+            <% if(row.type.includes("Radio") || row.type.includes("Tv")) { %>
+            <div class="form-input chan flex">
+                <label class="label"  for="">Channel ( 1 - 10 ) : </label>
+                <div class="flex">
+                    <input type="number" min="1" max="10" name="channel" value="<%= row.channel%>">
+                </div>
+            </div>
+            <% } %>
+            <div class="form-input loc flex">
+                <label class="label" for="">Location : </label>
+                <div class="flex">
+                    <input type="text" name="location" value="<%= row.location %>" required>
+                </div>
+            </div>
+            <div class="form-input">
+                <input class="btn" type="submit" value="update device">
+            </div>
+        </form>
+    </div>
+</div>
+

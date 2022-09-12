@@ -1,0 +1,353 @@
+.grid
+{
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit,minmax(280px,319px)); */
+    grid-template-columns: repeat(auto-fit,minmax(280px,315px));
+    gap: 15px;
+}
+
+.grid-select
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,200px));
+    gap: 15px;
+}
+
+.devices
+{
+
+}
+
+.device-card,.device-card-al
+{
+    position: relative;
+    height: 225px;
+    padding: 15px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.13);
+    transition: 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.grid-select .device-card
+{
+    pointer-events:visible;
+}
+
+.grid-select .device-card:hover{
+    background-color: #2196F3;
+    color: rgb(255, 255, 255);
+}
+
+.material-icons
+{
+    transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.grid-select .device-card:hover .material-icons{
+  color: rgb(255, 255, 255);
+  transform: translateY(-20px);
+}
+
+.top
+{
+    height: 20%;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+.bottom
+{
+    position: relative;
+    height: 80%;
+    pointer-events: none;
+}
+
+.right,.left
+{
+    height: 100%;
+}
+
+.right
+{
+    width: 30%;
+}
+.left
+{
+    width: 70%;
+}
+
+.right
+{
+  
+}
+
+.device-name
+{
+    font-weight: bold;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.device-desc
+{
+    position: absolute;
+    font-weight: bold;
+    font-size: 10px;
+    top: 15px;
+}
+
+.device-icon
+{
+    font-size: 22px;
+    margin-right: 0.65rem;
+}
+
+.right-icon
+{
+    font-size: 80px;
+    position: relative;
+    color: black;
+    top: 15px;
+}
+
+.device-value
+{
+    font-weight: bold;
+    font-size: 80px;
+    position: relative;
+    top: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.device-value span 
+{
+    font-size: 34px;
+    position: relative;
+    top: 15px;
+    left: 10px;
+}
+
+/************************************/
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  /******************/
+
+  .closed
+  {
+      font-size:16px !important;
+      color:rgb(255, 30, 0);
+      background:rgba(16, 21, 22, 0.945);
+      padding:0.8rem 1.2rem;
+      border-radius:25px 20px;
+  }
+
+  .opened
+  {
+      font-size:16px !important;
+      color:rgb(0 255 21);
+      background:rgba(14, 19, 20, 0.932);
+      padding:0.8rem 1.2rem;
+      border-radius:25px 20px;
+  }
+
+  /*************************/
+
+  .device-style
+  {
+       background-color:lightgrey;
+       width:20px;
+       border-radius: 20px;
+       height:109px;
+       position:relative;
+       padding: 0.25rem;
+  }
+  
+  .style
+  {
+       background-color:#f30909;
+       width:14px;
+       position:absolute;
+       bottom:0;
+       overflow:hidden;
+       transform:translateY(-4px);
+       border-radius: 20px;
+  }
+  
+  .cercle
+  {
+        position: absolute;
+        background-color:#626262;
+        height:8px;
+        width:30px;
+        transform:translateY(4px);
+        border-radius:4px;
+  }
+  
+  .temperc
+  {
+      background:linear-gradient(to top,#f30909,#ff8f00,#fcff00);
+  }
+
+  .tempercf
+  {
+      top:0;
+      transform:translateY(4px);
+  }
+  
+  .volc
+  {
+      background-color:lightgrey;
+      height:3px;
+      width:20px;
+      margin:3px;
+  }
+
+  .volcc
+  {
+        background:linear-gradient(to top,#1d3a5e,#2957a7,#00edff);
+  }
+
+
+  .on
+  {
+    background-color: #005ed9fa;
+    border-radius:8px;
+    color:white;
+    font-weight:bold;
+    font-size:10px;
+    width:58px;
+    text-align:center;
+    padding:0.4rem 0;
+  }
+
+  .of
+  {
+    background-color: #ff0000d1;
+    border-radius:8px;
+    color:white;
+    font-weight:bold;
+    font-size:10px;
+    width:58px;
+    text-align:center;
+    padding:0.4rem 0;
+  }
+
+  .speedc
+  {
+      background:linear-gradient(to top,#e40000,#fbff00,#98ff23);
+  }
+
+  .ison
+  {
+    background:linear-gradient(to top,#1be400,#00ffb3,#a0ff23);
+  }
+
+  .isof
+  {
+    background:linear-gradient(to top,#960000,#ff1313,#ff239c);
+  }
+
+  .location_name
+  {
+      background-color: rgb(38, 61, 0);
+      border-radius: 10px;
+      padding: 0.4rem;
+      color: #98ff23;
+      font-size: 12px;
+      margin-left: 10px;
+  }
+
+  #typeicon
+  {
+      background-color: #090d13;
+      color: #00edff;
+      padding: 0.5rem;
+      border-radius: 50%;
+  }
+
+  .device_type_ss
+  {
+    background-color: rgb(117, 0, 82);
+    border-radius: 10px;
+    padding: 0.2rem;
+    font-size: 10px;
+    position: relative;
+    top: 5px;
+    color: #ffffff;
+  }
+
+  .top-title
+  {
+    background-color: #005ed9fa;
+    padding: 0.5rem 1rem;
+    color: white;
+    width: fit-content;
+    border-radius: 0.4rem;
+  }

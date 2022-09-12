@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto:wght@300&display=swap');
+@import url('dashboard.css');
+@import url('form.css');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body,html{
+    /* background-color: rgb(14, 19, 24); */
+    font-family: 'roboto',sans-serif;
+    overflow:hidden;
+}
+
+#app{
+    height:100vh;
+    /* background-image: url("/assets/images/2.png"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container{
+    margin: auto 0;
+    padding: 1rem;
+    height: 100%;
+}
+
+.flex{
+    display:flex;
+}
+
+.flex-center
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-dir-col
+{
+    flex-direction: column;
+}
+
+.left-panel,.right-panel{
+  
+    height:100vh;
+}
+
+.left-panel{
+    overflow: hidden;
+    border-top-right-radius: 25px;
+    background-color:#006eff;
+    padding: 0.25rem;
+    width:146px;
+}
+
+.right-panel{
+    background-color:#ffffff;
+    width:100%;
+}
+
+nav{
+   display:flex;
+   height:100%;
+}
+
+.links{
+    width:100%;
+    display:inherit;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+a{
+    color:white;
+    text-decoration:none;
+}
+
+.link{
+    overflow: hidden;
+    text-align:left;
+    width:100%;
+    padding:1rem;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 0.2rem;
+    border-bottom:1px solid #ffffff45;
+    transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.link:hover{
+    background-color: white;
+    border-radius: 12% 25% 12%;
+    color: #006eff;
+}
+
+.link:hover i{
+    transform: rotate(360deg);
+}
+
+.link i{
+    font-size: 22px;
+    margin-bottom: 0.4rem;
+    transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.link div{
+    width: 100%;
+    text-align: center;
+}
+
+.content
+{
+    padding: 1.5rem;
+    background-color: rgb(231, 231, 231);
+    height: 96vh;
+    width: 100%;
+    border-radius: 0.5rem;
+    overflow-y: auto;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.582);
+}
+
+/**************/
+
+.selected
+{
+    background-color: white;
+    border-radius: 12% 25% 12%;
+    color: #006eff;
+}
+
+.hide 
+{
+    display: none;
+}
+
+.app-title
+{
+    background: linear-gradient(to left,rgb(24, 51, 109),rgb(0, 110, 255),rgb(22, 71, 177),rgb(0, 140, 255));
+    padding:3rem;
+    color: #ffffff;
+    font-size: 50px;
+    border-radius: 20px;
+}
+
+.maker
+{
+    background-color: rgba(0, 0, 0, 0.747);
+    padding:0.9rem;
+    text-align: center;
+    width: 250px;
+    transform: translateY(-180px);
+    color: #75b1ff;
+    border-radius: 8px;
+}
